@@ -22,9 +22,7 @@ changes. You can use a diff tool to check those changes.
 
 You will need the following to build this project:
 
-* Android Studio (requires the
-  [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html))
-* Android SDK and NDK (can be obtained via the SDK manager once Android Studio is installed)
+* [Android Studio](https://developer.android.com/studio/)
 * AGS engine native libraries.
 * A **compiled** AGS game (**NOTE:** Game must be **< 2 GB total**).
 * [jobbifier](https://github.com/monkey0506/jobbifier), replacement for `jobb` tool
