@@ -1,4 +1,4 @@
-# Hell's Puppy
+# Hell's Puppy Android Studio Project
 
 This is the Android Studio Project for the Game Hell's Puppy built on the Global Game Jam 2019.
 
