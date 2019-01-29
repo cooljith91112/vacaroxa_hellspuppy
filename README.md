@@ -37,7 +37,7 @@ build them. You can grab the latest libraries from the forums, under Editor Rele
 Wizard usually releases under For Android spoiler note. 
 [Here is a link for 3.4.1 native engine builds](http://www.adventuregamestudio.co.uk/releases/finals/AGS-3.4.1-P4/ags-3.4.1.15-android-libs.zip)
 
-Extract the contents of the `lib` folder (armeabi, armeabi-v7a, mips, and x86 folders) to `PROJECT_DIR/libs` 
+Extract the contents of the `lib` folder (armeabi, armeabi-v7a, mips, and x86 folders) to `PROJECT_DIR/jniLibs` 
 (where `PROJECT_DIR` is the directory where you cloned this project).
 
 ## Setting up the project for your game
