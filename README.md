@@ -29,19 +29,23 @@ You will need the following to build this project:
 
 ### Downloading AGS Engine Native Libraries (recommended)
 
+*** Building AGS is out of the scope of this README, so do this***
+
 It is much easier to download the pre-built native libraries than it is to rebuild them yourself, so
 unless you have made any changes to the AGS engine or the built-in plugin sources there's no need to
 build them. You can grab the latest libraries from the forums, under Editor Releases, Crimson
 Wizard usually releases under For Android spoiler note. 
 [Here is a link for 3.4.1 native engine builds](http://www.adventuregamestudio.co.uk/releases/finals/AGS-3.4.1-P4/ags-3.4.1.15-android-libs.zip)
 
-Extract the contents of the `lib` folder (armeabi, armeabi-v7a, mips, and x86 folders) to `PROJECT_DIR/jniLibs` 
-(where `PROJECT_DIR` is the directory where you cloned this project).
+Extract the contents of the `lib` folder (armeabi, armeabi-v7a, mips, and x86 folders) to `PROJECT_DIR/jniLibs`
+(where `PROJECT_DIR` is the directory where you cloned this project). **You will have to create `PROJECT_DIR/jniLibs`**.
 
 ## Setting up the project for your game
 
 With the prerequisites installed, you will need to change the following items to set up the project
 for building your game.
+
+* Before opening Android Studio, do as I told before and get AGS Engine Native Libraries and place it in `PROJECT_DIR/jniLibs`.
 
 * Update package name:
   * Open the project in Android Studio, then in the project tree navigate to
