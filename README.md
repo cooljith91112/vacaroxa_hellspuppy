@@ -4,7 +4,7 @@ This is the Android Studio Project for the Game Hell's Puppy built on the Global
 
 This game repository is available here: [github.com/VacaRoxa/dogfromhell](https://github.com/VacaRoxa/dogfromhell)
 
-This is only the repoository for it's Android Studio Project, shared with the intention to 
+This is only the repository for it's Android Studio Project, shared with the intention to 
 enable other AGS Projects to use this as a base in recent versions of Android Studio.
 
 This source code was originally built by monkey0506 for OceanSpirit Dennis: Scourge of the
@@ -15,9 +15,6 @@ This [Android Studio](https://developer.android.com/studio/index.html) project i
 building standalone APKs of [Adventure Game Studio](http://www.adventuregamestudio.co.uk/) games,
 for release on the Google Play Store.
 
-The text below written by Monkey was very informative and I will leave as is, with some small
-changes. You can use a diff tool to check those changes.
-
 ## Prerequisites
 
 You will need the following to build this project:
@@ -27,9 +24,9 @@ You will need the following to build this project:
 * A **compiled** AGS game (**NOTE:** Game must be **< 2 GB total**).
 * [jobbifier](https://github.com/monkey0506/jobbifier), replacement for `jobb` tool
 
-### Downloading AGS Engine Native Libraries (recommended)
+### Downloading AGS Engine Native Libraries 
 
-*** Building AGS is out of the scope of this README, so do this***
+***Building AGS is out of the scope of this README, so do this***
 
 It is much easier to download the pre-built native libraries than it is to rebuild them yourself, so
 unless you have made any changes to the AGS engine or the built-in plugin sources there's no need to
@@ -47,7 +44,10 @@ for building your game.
 
 * Before opening Android Studio, do as I told before and get AGS Engine Native Libraries and place it in `PROJECT_DIR/agsEngineLibrary/jniLibs/`.
 
+* Open Android Studio and wait it to sync.
+
 * Update package name:
+  * [![](https://user-images.githubusercontent.com/2244442/52019947-9ac95d80-24d6-11e9-9b41-a99b0d8cfe89.gif)](https://user-images.githubusercontent.com/2244442/52019940-969d4000-24d6-11e9-838c-3f8d83c2fccb.gif)
   * Open the project in Android Studio, then in the project tree navigate to
     app/java/com.vacaroxa.hellspuppy
   * Right-click on this folder and select "Refactor -> Move...". When prompted, select "Move
@@ -94,9 +94,10 @@ for building your game.
   my game installed and don't do this, it will launch Hell's Puppy instead of your game!
 
 
-* Build your `.obb` expansion file (see instructions below).
+* Build your `.obb` expansion file, if it's smaller then 100MB, place on `app/src/main/assets/`. If
+it isn't, see detailed instructions below.
 
-## APK Expansion File
+## `.obb` APK Expansion File
 
 Your game's data files need to be packaged into an
 [OBB file](https://developer.android.com/google/play/expansion-files.html). The `jobb` tool included
@@ -116,7 +117,7 @@ OBB file.
 Copy your game files and pasted it under the `obb/` folder in this repo, with the android.cfg file.
 Edit android.cfg according to your game (eg: rotation = 1 for vertical or 2 for horizontal game, etc).
 
-![](https://i.imgur.com/aadJOnm.png)
+![](https://user-images.githubusercontent.com/2244442/52019491-08748a00-24d5-11e9-9c2d-76acb04da1c1.png)
 
 On the input folder, navigate to this repo `obb/` folder and on output, navigate to `app/src/main/assets/` 
 on this repo folder. Don't use password, leave as main, don't forget to write your identifier and please 
@@ -144,7 +145,7 @@ are the images shown while downloading the obb files, so update those to match y
 With your device connected in Android Studio, selected from the list, click play to run the debugger 
 and have your game process selected in debugable process. This will give you better messages in the logcat.
 
-![](https://i.imgur.com/hZ8Q3nJ.png)
+![](https://user-images.githubusercontent.com/2244442/52019497-0f9b9800-24d5-11e9-99f0-6b602ee533ab.png)
 
 
 ## Building the APK
@@ -190,3 +191,10 @@ smooth_sprites = 0
 show_fps = 0
 logging = 0
 ```
+
+
+## License and Author
+
+The libraries [**`downloader_library`**](https://github.com/monkey0506/google_downloader_library) and [**`play_licensing_library`**](https://github.com/monkey0506/google_play_licensing_library) are release through The Android Open Source Project, using APACHE-2 License, and has modifications provided by MonkeyMoto Productions on Public Domain. I did only small modifications on the gradle to build.
+
+This code was initially provided by MonkeyMoto Productions, under Public Domain, on the [monkey0506/osd-scourgeoftheunderworld-as](https://github.com/monkey0506/osd-scourgeoftheunderworld-as) repository. My modifications on this repository are provided under [MIT License](LICENSE).
