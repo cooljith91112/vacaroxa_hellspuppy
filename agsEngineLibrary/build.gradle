@@ -26,7 +26,7 @@ android {
         }
     }
 }
-task ndkBuild(type: Exec) {
+/*task ndkBuild(type: Exec) {
     if (!new File("$rootProject.projectDir/jniLibs").exists()) {
         Properties localProps = new Properties();
         new File(project.rootDir, 'local.properties').withInputStream {
@@ -48,10 +48,10 @@ task ndkBuild(type: Exec) {
     } else {
         commandLine 'echo', '""'
     }
-}
+}*/
 // build a JAR so the native libraries can be built into the APK
 task nativeLibsToJar(type: Zip) {
-    dependsOn ndkBuild
+   // dependsOn ndkBuild
     baseName "native-libs"
     extension "jar"
     from fileTree(dir: "$rootProject.projectDir/jniLibs", include: "**/*.so")
