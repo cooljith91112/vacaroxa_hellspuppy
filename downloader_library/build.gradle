@@ -3,9 +3,9 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion = 26
     buildToolsVersion = '27.0.3'
-
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 26
     }
 
@@ -17,6 +17,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:24.2.0'
+    compile 'com.android.support:support-v4:26.1.0'
     compile project(':play_licensing_library')
 }
