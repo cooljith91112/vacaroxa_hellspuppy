@@ -37,15 +37,15 @@ build them. You can grab the latest libraries from the forums, under Editor Rele
 Wizard usually releases under For Android spoiler note. 
 [Here is a link for 3.4.1 native engine builds](http://www.adventuregamestudio.co.uk/releases/finals/AGS-3.4.1-P4/ags-3.4.1.15-android-libs.zip)
 
-Extract the contents of the `lib` folder (armeabi, armeabi-v7a, mips, and x86 folders) to `PROJECT_DIR/jniLibs`
-(where `PROJECT_DIR` is the directory where you cloned this project). **You will have to create `PROJECT_DIR/jniLibs`**.
+Extract the contents of the android-libs.zip (armeabi, armeabi-v7a, mips, and x86 folders) to `PROJECT_DIR/agsEngineLibrary/jniLibs/`
+(where `PROJECT_DIR` is the directory where you cloned this project). **You will have to create `PROJECT_DIR/agsEngineLibrary/jniLibs/`**. 
 
 ## Setting up the project for your game
 
 With the prerequisites installed, you will need to change the following items to set up the project
 for building your game.
 
-* Before opening Android Studio, do as I told before and get AGS Engine Native Libraries and place it in `PROJECT_DIR/jniLibs`.
+* Before opening Android Studio, do as I told before and get AGS Engine Native Libraries and place it in `PROJECT_DIR/agsEngineLibrary/jniLibs/`.
 
 * Update package name:
   * Open the project in Android Studio, then in the project tree navigate to
