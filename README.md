@@ -85,7 +85,12 @@ for building your game.
   graphics for your app, or use your preferred method. Everything in the `drawable` and various
   `mipmap-*` folders should be replaced with your resources.
 
-* Build your expansion file (see instructions below).
+* Update your `app/src/main/AndroidManifest.xml` , check if `android:name` of both your application and
+  the your MainActivity to your `STUDIONAME.GAMENAME` instead of `vacaroxa.hellspuppy`. If you have
+  my game installed and don't do this, it will launch Hell's Puppy instead of your game!
+
+
+* Build your `.obb` expansion file (see instructions below).
 
 ## APK Expansion File
 
