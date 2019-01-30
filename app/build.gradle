@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId projectProperties['applicationId']
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 26
         versionCode Integer.parseInt(projectProperties.getProperty('versionCode'))
         versionName projectProperties['versionName']
@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-compile 'com.android.support:appcompat-v7:24.2.0'
+compile 'com.android.support:appcompat-v7:26.1.0'
 compile project(':agsEngineLibrary')
 compile project(':downloader_library')
 }
