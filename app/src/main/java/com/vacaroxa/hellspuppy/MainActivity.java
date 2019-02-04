@@ -21,6 +21,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.google.android.vending.expansion.downloader.Helpers;
+import android.os.Environment;
 
 public class MainActivity extends Activity {
     static final int OBB_FILE_VERSION = App.getContext().getResources().
@@ -34,15 +36,76 @@ public class MainActivity extends Activity {
     private static final String OBB_FILE_NAME = "main." + OBB_FILE_VERSION + "." + PACKAGE_NAME +
             ".obb";
     private static final boolean OBB_EMBEDDED = getObbEmbedded();
-    //private static final String OBB_FILE_EXTERNAL_PATH =
-    //        Environment.getExternalStorageDirectory() + "/Android/obb/" + PACKAGE_NAME + "/" +
-    //                OBB_FILE_NAME;
     private static final String OBB_FILE_EXTERNAL_PATH =
-            App.getContext().getExternalFilesDir(null)+"/" +
+            Environment.getExternalStorageDirectory() + "/Android/obb/" + PACKAGE_NAME + "/" +
                     OBB_FILE_NAME;
+    //private static final String OBB_FILE_EXTERNAL_PATH =
+    //        App.getContext().getExternalFilesDir(null)+"/" +
+    //                OBB_FILE_NAME;
     private static final int DOWNLOAD_REQUEST = 1;
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST = 2;
     private OnObbStateChangeListener expansionListener;
+
+    /**
+     * This is a little helper class that demonstrates simple testing of an
+     * Expansion APK file delivered by Market. You may not wish to hard-code
+     * things such as file lengths into your executable... and you may wish to
+     * turn this code off during application development.
+     */
+    private static class XAPKFile {
+        public final boolean mIsMain;
+        public final int mFileVersion;
+        public final long mFileSize;
+
+        XAPKFile(boolean isMain, int fileVersion, long fileSize) {
+            mIsMain = isMain;
+            mFileVersion = fileVersion;
+            mFileSize = fileSize;
+        }
+    }
+
+    /**
+     * Here is where you place the data that the validator will use to determine
+     * if the file was delivered correctly. This is encoded in the source code
+     * so the application can easily determine whether the file has been
+     * properly delivered without having to talk to the server. If the
+     * application is using LVL for licensing, it may make sense to eliminate
+     * these checks and to just rely on the server.
+     */
+    private static final XAPKFile[] xAPKS = {
+        new XAPKFile(
+            true, // true signifies a main file
+                OBB_FILE_VERSION, // the version of the APK that the file was uploaded
+            // against
+                OBB_FILE_SIZE // the length of the file in bytes
+        )
+//        new XAPKFile(
+//            false, // false signifies a patch file
+//            4, // the version of the APK that the patch file was uploaded
+//            // against
+//            512860L // the length of the patch file in bytes
+//        )
+    };
+
+    /**
+     * Go through each of the APK Expansion files defined in the structure above
+     * and determine if the files are present and match the required size. Free
+     * applications should definitely consider doing this, as this allows the
+     * application to be launched for the first time without having a network
+     * connection present. Paid applications that use LVL should probably do at
+     * least one LVL check that requires the network to be present, so this is
+     * not as necessary.
+     *
+     * @return true if they are present.
+     */
+    boolean expansionFilesDelivered() {
+        for (XAPKFile xf : xAPKS) {
+            String fileName = Helpers.getExpansionAPKFileName(this, xf.mIsMain, xf.mFileVersion);
+            if (!Helpers.doesFileExist(this, fileName, xf.mFileSize, false))
+                return false;
+        }
+        return true;
+    }
 
     static
     {
@@ -171,9 +234,13 @@ public class MainActivity extends Activity {
             copyEmbeddedObbToExternalStorage();
             mountExpansionAndStartGame(OBB_KEY);
         }
-        else {
-            downloadExpansionFile();
-            // expansion mounted when download finishes (async)
+        else{
+            if(expansionFilesDelivered()) {
+                mountExpansionAndStartGame(OBB_KEY);
+            } else {
+                downloadExpansionFile();
+                // expansion mounted when download finishes (async)
+            }
         }
     }
 
